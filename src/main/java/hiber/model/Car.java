@@ -7,16 +7,14 @@ import javax.persistence.*;
 public class Car {
 
     @Id
-    @Column(name = "car_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String model;
 
     private int series;
 
-    @MapsId
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "car")
-    @JoinColumn(name ="car_id")
+    @OneToOne(mappedBy = "car")
     private User user;
 
     public Car() {
